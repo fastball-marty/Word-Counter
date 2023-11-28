@@ -1,6 +1,6 @@
 ---
 title: Pamela Word Counter
-author: Emma Carlson
+author: emmacarl7
 date: 11.27.2023
 format:
     html:
