@@ -1,5 +1,5 @@
 # Custom Word Counter 
-* Author(s): fastball_marty 
+* Author(s): emmacarl7
 * Published: 11.27.2023
 
 ## Description
