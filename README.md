@@ -15,7 +15,7 @@ Below are instructions on how to run this code on your machine, and how to count
 
 * Python:
   * Visit the official Python website: <https://www.python.org/downloads/>
-  * Choose the appropriate version for your operating system (Windows, macOS, or Linux).
+  * Choose the appropriate version for your operating system (Windows, macOS, or Linux). The version number of python shouldn't matter, but I am using 3.11.6
   * Follow the installation instructions provided on the website.
   * During installation, make sure to check the option to add Python to your system's PATH.
   * Verify the installation by opening a command prompt or terminal and typing python --version or python3 --version. You should see the installed Python version.
@@ -31,16 +31,16 @@ The myapp.py program requires your text to be stored as a .txt file. The tutoria
 
 <https://www.groovypost.com/howto/quickly-create-new-blank-text-file-windows-mac-linux/>
 
-After you have created your .txt file, ensure **it is located in the same directory as myapp.py.** (For example, both files located on your Desktop.)
+After you have created your .txt file and added the text you want to count, ensure **it is located in the same directory as myapp.py.** (For example, both files located on your Desktop.)
 
 ### 3. Navigate to the files
-You will need a command line interface to run this program. See the guides below on how to open up a terminal:
+You will need a command line interface (CLI) to run this program. See the guides below on how to open up a CLI on your machine:
 
-* Mac: <https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/2.14/mac/14.0>
-* Windows: <https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.4>
-* Linux: <https://ubuntu.com/tutorials/command-line-for-beginners#3-opening-a-terminal>
+* Mac (terminal): <https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/2.14/mac/14.0>
+* Windows (powershell): <https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/01-getting-started?view=powershell-7.4>
+* Linux (terminal): <https://ubuntu.com/tutorials/command-line-for-beginners#3-opening-a-terminal>
 
-Once your terminal is open, you will need to navigate to the directory where you stored the files. For example, 
+Once your CLI is open, you will need to navigate to the directory where you stored the files using the cd command. For example, 
 
     cd Desktop/myFiles
 
@@ -49,6 +49,8 @@ will bring you to the Desktop directory, and then to the myFiles folder stored o
     ls 
 
 and you will see all of the files located in your current directory. If you do not see myapp.py and your .txt file, you are not in the correct directory.
+
+Here is a simple tutorial on navigating the command line: <https://tutorials.codebar.io/command-line/introduction/tutorial.html#:~:text=The%20cd%20command%20allows%20you,command%20is%20cd%20your%2Ddirectory%20.&text=Now%20that%20we%20moved%20to,again%2C%20then%20cd%20into%20it.>
 
 Below is an example screenshot of the above steps from the Mac terminal:
 
@@ -63,4 +65,4 @@ Alternatively, if you have an older version of python, enter:
 
     python myapp.py
 
-The program should now be running. Enter the name of your file to count its words.
+The program should now be running. Enter the name of your file to count its words, and follow the additional prompts.

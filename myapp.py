@@ -31,7 +31,7 @@ class MyApp:
     except Exception as e:
       print(f"Error: An unexpected error occurred: {e}")
 
-    # sort from most occuring word to lowest
+    # sort from most occuring word to least
     sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
 
     return sorted_word_count
@@ -39,6 +39,8 @@ class MyApp:
 
   @staticmethod
   def filtered_word_count(fileName):
+
+    # list of common filler words -- feel free to add/remove any
     common_function_words = [
       'the', 'and', 'a', 'to', 'of', 'in', 'is', 'you', 'that', 'it', 'he', 'was', 'for',
       'on', 'are', 'as', 'with', 'his', 'they', 'i', 'at', 'be', 'this', 'have', 'from',
@@ -103,6 +105,7 @@ if __name__ == "__main__":
 
   my_app = MyApp()
 
+  # get .txt file name
   file_name = input("Please enter a file name. (The file must be a .txt, and the file must be in the same directory as myapp.py): ")
 
   while True:
@@ -118,8 +121,11 @@ if __name__ == "__main__":
     except ValueError:
       print("Invalid input. Please enter a number.")
 
+  # include filler words
   if option == 0:
     print (my_app.format_output(my_app.word_count(file_name)))
+  
+  # ignore filler words
   else:
     print (my_app.format_output(my_app.filtered_word_count(file_name)))
 
