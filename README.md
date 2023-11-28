@@ -5,7 +5,7 @@
 ## Description
 This Github repository stores the code that counts the occurences of words in a .txt file, and it can be used for any body of text.
 
-<https://>
+<https://github.com/emmacarl7/Word-Counter>
 
 Below are instructions on how to run this code on your machine, and how to count your own custom .txt file.
 
@@ -21,7 +21,7 @@ Below are instructions on how to run this code on your machine, and how to count
   * Verify the installation by opening a command prompt or terminal and typing python --version or python3 --version. You should see the installed Python version.
 
 * myapp.py
-  * Within this repo: <>
+  * Within this repo: <https://github.com/emmacarl7/Word-Counter>
   * Click on the file 'myapp.py'
   * Look for a "Download" button or a "Raw" button on the file page.
   * Right-click on the "Download" or "Raw" button and choose "Save As" to download the file to your computer.
