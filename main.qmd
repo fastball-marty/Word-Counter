@@ -1,0 +1,48 @@
+---
+title: Pamela Word Counter
+author: Emma Carlson
+date: 11.27.2023
+format:
+    html:
+        theme: cosmos
+        toc: true
+        html-math-method: katex
+        embed-resources: true
+        copy-code: true
+---
+
+```{python}
+#| eval: true
+#| echo: false
+import ipywidgets as widgets
+from IPython.display import display
+```
+
+### Overview
+
+Below is a word counter for *Pamela; or, Virtue Rewarded* by Samuel Richardson that tracks how often each word appears in the text. There are two counters: one includes every word, and the other filters out common words. 
+
+Text provided by the Gutenberg Press, located at <https://www.gutenberg.org/cache/epub/6124/pg6124-images.html>. The text is in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines.
+
+### Count all words
+
+```{python}
+#| eval: true
+#| echo: false
+from myapp import MyApp
+
+my_app = MyApp()
+
+dictionary = my_app.word_count('assets/pamela.txt')
+print(my_app.format_output(dictionary))
+```
+
+
+### Count words but remove common words
+```{python}
+#| eval: true
+#| echo: false
+filtered_dictionary = my_app.filtered_word_count('assets/pamela.txt')
+print(my_app.format_output(filtered_dictionary))
+```
+
