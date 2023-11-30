@@ -35,31 +35,30 @@ format:
 ```{python}
 #| eval: true
 #| echo: false
-from myapp import MyApp
+from src.wordcounter import word_count, filtered_word_count, limit_format_output
 
-my_app = MyApp()
 
 # pamela all
-pamela_dictionary = my_app.word_count('assets/pamela.txt')
-pamela_string = my_app.limit_format_output(pamela_dictionary)
+pamela_dictionary = word_count('assets/pamela.txt')
+pamela_string = limit_format_output(pamela_dictionary)
 
 # crusoe all
-crusoe_dictionary = my_app.word_count('assets/crusoe.txt')
-crusoe_string = my_app.limit_format_output(crusoe_dictionary)
+crusoe_dictionary = word_count('assets/crusoe.txt')
+crusoe_string = limit_format_output(crusoe_dictionary)
 
 # pamela filtered
-filtered_pamela_dictionary = my_app.filtered_word_count('assets/pamela.txt')
-filtered_pamela_string = my_app.limit_format_output(filtered_pamela_dictionary)
+filtered_pamela_dictionary = filtered_word_count('assets/pamela.txt')
+filtered_pamela_string = limit_format_output(filtered_pamela_dictionary)
 
 # crusoe filtered
-filtered_crusoe_dictionary = my_app.filtered_word_count('assets/crusoe.txt')
-filtered_crusoe_string = my_app.limit_format_output(filtered_crusoe_dictionary)
+filtered_crusoe_dictionary = filtered_word_count('assets/crusoe.txt')
+filtered_crusoe_string = limit_format_output(filtered_crusoe_dictionary)
 
 ```
 
 ### Overview
 
-Below is a word counter that compares the frequency of words in *Pamela; or, Virtue Rewarded* by Samuel Richardson to *The Life and Adventures of Robinson Crusoe* by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, I, very, must).
+Below is a word counter that compares the frequency of words in *Pamela; or, Virtue Rewarded* by Samuel Richardson to *The Life and Adventures of Robinson Crusoe* by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, I, very, must). For sanity, only the first 100 words from each text are presented.
 
 Both text are in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines. Both texts provided by the Gutenberg Press, located at:
 

@@ -1,0 +1,4 @@
+# .gitignore
+mywordcloud.py
+prepare.py
+__pycache__/

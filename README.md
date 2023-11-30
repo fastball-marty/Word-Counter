@@ -20,18 +20,18 @@ Below are instructions on how to run this code on your machine, and how to count
   * During installation, make sure to check the option to add Python to your system's PATH.
   * Verify the installation by opening a command prompt or terminal and typing python --version or python3 --version. You should see the installed Python version.
 
-* myapp.py
+* wordcounter.py
   * Within this repo: <https://github.com/emmacarl7/Word-Counter>
-  * Click on the file *myapp.py*
+  * Navigate to the */src* subdirectory and click on the file *wordcounter.py*
   * Look for a "Download" button or a "Raw" button on the file page.
   * Right-click on the "Download" or "Raw" button and choose "Save As" to download the file to your computer.
 
 ### 2. Prepare .txt file
-The myapp.py program requires your text to be stored as a .txt file. The tutorial below walks through how to create a .txt file:
+The wordcounter.py program requires your text to be stored as a .txt file. The tutorial below walks through how to create a .txt file:
 
 <https://www.groovypost.com/howto/quickly-create-new-blank-text-file-windows-mac-linux/>
 
-After you have created your .txt file and added the text you want to count, ensure **it is located in the same directory as myapp.py.** (For example, both files located on your Desktop.)
+After you have created your .txt file and added the text you want to count, ensure **it is located in the same directory as wordcounter.py.** (For example, both files located on your Desktop.)
 
 ### 3. Navigate to the files
 You will need a command line interface (CLI) to run this program. See the guides below on how to open up a CLI on your machine:
@@ -48,21 +48,17 @@ will bring you to the Desktop directory, and then to the myFiles folder stored o
 
     ls 
 
-and you will see all of the files located in your current directory. If you do not see myapp.py and your .txt file, you are not in the correct directory.
+and you will see all of the files located in your current directory. If you do not see both wordcounter.py and your .txt file, you are **not** in the correct directory.
 
 Here is a simple tutorial on navigating the command line: <https://tutorials.codebar.io/command-line/introduction/tutorial.html#:~:text=The%20cd%20command%20allows%20you,command%20is%20cd%20your%2Ddirectory%20.&text=Now%20that%20we%20moved%20to,again%2C%20then%20cd%20into%20it.>
-
-Below is an example screenshot of the above steps from the Mac terminal:
-
-![Termianl Tutorial](/assets/example.png)
 
 ### 4. Run the program
 Within your terminal and inside the correct directory, type the following line and press enter:
 
-    python3 myapp.py
+    python3 wordcounter.py
 
 Alternatively, if you have an older version of python, enter:
 
-    python myapp.py
+    python wordcounter.py
 
 The program should now be running. Enter the name of your file to count its words, and follow the additional prompts.
