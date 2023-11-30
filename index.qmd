@@ -1,7 +1,7 @@
 ---
-title: Pamela Word Counter
+title: Word Counter for Text Comparisons
 author: emmacarl7
-date: 11.27.2023
+date: 11.29.2023
 format:
     html:
         theme: cosmos
@@ -11,23 +11,26 @@ format:
         copy-code: true
 ---
 
-### Overview
-
-Below is a word counter for *Pamela; or, Virtue Rewarded* by Samuel Richardson that tracks how often each word appears in the text. There are two counters: one includes every word, and the other filters out common words such as and, the, I, etc. 
-
-The text is provided by the Gutenberg Press, located at:
-
-<https://www.gutenberg.org/cache/epub/6124/pg6124-images.html>. 
-
-The text is in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines.
-
-The code for this project is available for y'all to use at:
-
-<https://github.com/emmacarl7/Word-Counter>
-
-There, you will find instructions on how to count the words of any .txt file of your choosing. 
-
-### Count all words
+<head>
+<style>
+  table {
+      width: 80%;
+      border-collapse: collapse;
+      margin: 20px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd; 
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  td + td {
+    padding-left: 20px;
+  }
+  </style>
+</head>
 
 ```{python}
 #| eval: true
@@ -36,16 +39,100 @@ from myapp import MyApp
 
 my_app = MyApp()
 
-dictionary = my_app.word_count('assets/pamela.txt')
-print(my_app.format_output(dictionary))
+# pamela all
+pamela_dictionary = my_app.word_count('assets/pamela.txt')
+pamela_string = my_app.limit_format_output(pamela_dictionary)
+
+# crusoe all
+crusoe_dictionary = my_app.word_count('assets/crusoe.txt')
+crusoe_string = my_app.limit_format_output(crusoe_dictionary)
+
+# pamela filtered
+filtered_pamela_dictionary = my_app.filtered_word_count('assets/pamela.txt')
+filtered_pamela_string = my_app.limit_format_output(filtered_pamela_dictionary)
+
+# crusoe filtered
+filtered_crusoe_dictionary = my_app.filtered_word_count('assets/crusoe.txt')
+filtered_crusoe_string = my_app.limit_format_output(filtered_crusoe_dictionary)
+
 ```
 
+### Overview
 
-### Count words but remove common words
+Below is a word counter that compares the frequency of words in *Pamela; or, Virtue Rewarded* by Samuel Richardson to *The Life and Adventures of Robinson Crusoe* by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, I, very, must).
+
+Both text are in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines. Both texts provided by the Gutenberg Press, located at:
+
+<https://www.gutenberg.org/cache/epub/6124/pg6124-images.html>. 
+
+<https://www.gutenberg.org/cache/epub/521/pg521-images.html>
+
+The code for this project is available on Github for y'all to use. There, you will find instructions on how to count the words of any .txt file of your choosing. Link to GitHub: 
+
+<https://github.com/emmacarl7/Word-Counter>
+
+
+### All words
+
+<table>
+  <tr>
+    <th>Pamela</th>
+    <th>Robinson Crusoe</th>
+  </tr>
+  <tr>
+    <td>
+
 ```{python}
 #| eval: true
 #| echo: false
-filtered_dictionary = my_app.filtered_word_count('assets/pamela.txt')
-print(my_app.format_output(filtered_dictionary))
+
+print (pamela_string)
 ```
+
+</td>
+<td>
+
+```{python}
+#| eval: true
+#| echo: false
+
+print (crusoe_string)
+```    
+
+  </td>
+  </tr>
+</table>
+
+### Ignore common words
+
+<table>
+  <tr>
+    <th>Pamela</th>
+    <th>Robinson Crusoe</th>
+  </tr>
+  <tr>
+    <td>
+
+```{python}
+#| eval: true
+#| echo: false
+
+print (filtered_pamela_string)
+```
+
+</td>
+<td>
+
+```{python}
+#| eval: true
+#| echo: false
+
+print (filtered_crusoe_string)
+```    
+
+  </td>
+  </tr>
+</table>
+
+
 

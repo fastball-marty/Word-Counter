@@ -22,7 +22,7 @@ Below are instructions on how to run this code on your machine, and how to count
 
 * myapp.py
   * Within this repo: <https://github.com/emmacarl7/Word-Counter>
-  * Click on the file 'myapp.py'
+  * Click on the file *myapp.py*
   * Look for a "Download" button or a "Raw" button on the file page.
   * Right-click on the "Download" or "Raw" button and choose "Save As" to download the file to your computer.
 

@@ -43,14 +43,15 @@ class MyApp:
     # list of common filler words -- feel free to add/remove any
     common_function_words = [
       'the', 'and', 'a', 'to', 'of', 'in', 'is', 'you', 'that', 'it', 'he', 'was', 'for',
-      'on', 'are', 'as', 'with', 'his', 'they', 'i', 'at', 'be', 'this', 'have', 'from',
+      'on', 'are', 'as', 'with', 'his', 'they', 'at', 'be', 'this', 'have', 'from',
       'or', 'one', 'had', 'by', 'word', 'but', 'not', 'what', 'all', 'were', 'we', 'when',
       'your', 'can', 'said', 'there', 'use', 'an', 'each', 'which', 'she', 'do', 'how',
       'their', 'if', 'will', 'up', 'other', 'about', 'out', 'many', 'then', 'them', 'these',
       'so', 'some', 'her', 'would', 'make', 'like', 'him', 'into', 'time', 'has', 'look',
       'two', 'more', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'people', 'my',
       'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'its', 'now', 'find', 'long',
-      'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part', 'me', 'am', 'shall', 'should'
+      'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part', 'me', 'am', 'shall', 'should',
+      'very', 'upon', 'might', 'much', 'such', 'though', 'yet', 'too', 'any'
     ]
 
     word_count = {}
@@ -90,12 +91,25 @@ class MyApp:
       print(f"Error: An unexpected error occurred: {e}")
 
     return filtered_word_count
-
+  
   @staticmethod
   def format_output(dictionary):
     formatted_output = ""
     for key, value in dictionary.items():
       formatted_output += f"{key}: {value}\n"
+
+    return formatted_output
+
+  @staticmethod
+  def limit_format_output(dictionary):
+    formatted_output = ""
+    count = 0
+    for key, value in dictionary.items():
+      formatted_output += f"{key}: {value}\n"
+      count +=1
+
+      if (count == 100):
+        break
 
     return formatted_output
 
@@ -128,5 +142,3 @@ if __name__ == "__main__":
   # ignore filler words
   else:
     print (my_app.format_output(my_app.filtered_word_count(file_name)))
-
-
