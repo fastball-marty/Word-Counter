@@ -4,11 +4,9 @@ import re
 # uni-code library
 import unicodedata
 
-"""
-basic_clean provided by @m3redithw
 
-see prepare.py for more info
-"""
+# basic_clean provided by @m3redithw
+# see prepare.py for more info
 def basic_clean(string):
     '''
     This function takes in a string and
@@ -52,7 +50,7 @@ def word_count(fileName):
 
   # Handle exceptions
   except FileNotFoundError:
-    print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as myapp.py?")
+    print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as wordcounter.py?")
   except Exception as e:
     print(f"Error: An unexpected error occurred: {e}")
 
@@ -107,7 +105,7 @@ def filtered_word_count(fileName):
 
   # Handle exceptions
   except FileNotFoundError:
-    print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as myapp.py?")
+    print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as wordcounter.py?")
   except Exception as e:
     print(f"Error: An unexpected error occurred: {e}")
 

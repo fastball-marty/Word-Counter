@@ -1,0 +1,203 @@
+---
+title: Word Counter for Text Comparisons
+author: "@emmacarl7"
+format:
+    html:
+        theme: cosmos
+        toc: true
+        html-math-method: katex
+        embed-resources: true
+        copy-code: true
+---
+
+<head>
+<style>
+  table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd; 
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  td + td {
+    padding-left: 20px;
+  }
+  </style>
+</head>
+
+```{python}
+#| eval: true
+#| echo: false
+from src.wordcounter import word_count, filtered_word_count, limit_format_output, compare_dictionaries
+
+# pamela all
+pamela_dictionary = word_count('assets/pamela.txt')
+pamela_sum = sum(pamela_dictionary.values())
+pamela_string = limit_format_output(pamela_dictionary)
+
+# crusoe all
+crusoe_dictionary = word_count('assets/crusoe.txt')
+crusoe_sum = sum(crusoe_dictionary.values())
+crusoe_string = limit_format_output(crusoe_dictionary)
+
+# pamela filtered
+filtered_pamela_dictionary = filtered_word_count('assets/pamela.txt')
+filtered_pamela_string = limit_format_output(filtered_pamela_dictionary)
+
+# crusoe filtered
+filtered_crusoe_dictionary = filtered_word_count('assets/crusoe.txt')
+filtered_crusoe_string = limit_format_output(filtered_crusoe_dictionary)
+
+# compare texts
+pamela_exclusive, crusoe_exclusive = compare_dictionaries(pamela_dictionary, crusoe_dictionary)
+
+```
+
+### Overview
+
+Below is a word counter that compares the frequency of words in *Pamela; or, Virtue Rewarded* by Samuel Richardson to *The Life and Adventures of Robinson Crusoe* by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, to, very, must). **For sanity, only the first 100 words are presented.**
+
+Also included is a table to display words exclusive to each novel, to display the unique vocabularies both implement. Again, **only the first 100 words are presented.**
+
+Both text are in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines. Both texts provided by Project Gutenberg, located below:
+
+Pamela: <a href="https://www.gutenberg.org/cache/epub/6124/pg6124-images.html" target="_blank">https://www.gutenberg.org/cache/epub/6124/pg6124-images.html</a> 
+
+Crusoe: <a href="https://www.gutenberg.org/cache/epub/521/pg521-images.html" target="_blank">https://www.gutenberg.org/cache/epub/521/pg521-images.html</a>
+
+The code for this project is available on Github for y'all to use. There, you will find instructions on how to count the words of any .txt file of your choosing. 
+
+Link to GitHub: <a href="https://github.com/emmacarl7/Word-Counter" target="_blank">https://github.com/emmacarl7/Word-Counter</a>
+
+
+### Count all words
+
+<table>
+  <tr>
+    <th>Pamela</th>
+    <th>Robinson Crusoe</th>
+  </tr>
+
+  <tr>
+    <td>
+
+```{python}
+#| eval: true
+#| echo: false
+print(f"Total words: {pamela_sum}")
+print()
+print (pamela_string)
+```
+
+</td>
+<td>
+
+```{python}
+#| eval: true
+#| echo: false
+print(f"Total words: {crusoe_sum}")
+print()
+print (crusoe_string)
+```    
+
+  </td>
+  </tr>
+</table>
+
+### Ignore common words
+
+<table>
+  <tr>
+    <th>Pamela</th>
+    <th>Robinson Crusoe</th>
+  </tr>
+  <tr>
+    <td>
+
+```{python}
+#| eval: true
+#| echo: false
+
+print (filtered_pamela_string)
+```
+
+</td>
+<td>
+
+```{python}
+#| eval: true
+#| echo: false
+
+print (filtered_crusoe_string)
+```    
+
+  </td>
+  </tr>
+</table>
+
+
+### Words exclusive to each novel
+<table>
+  <tr>
+    <th>Pamela</th>
+    <th>Robinson Crusoe</th>
+  </tr>
+
+  <tr>
+    <td>
+
+```{python}
+#| eval: true
+#| echo: false
+count = 0
+for word in pamela_exclusive:
+  print(word)
+  count += 1
+
+  if count == 100:
+    break
+```
+
+</td>
+<td>
+
+```{python}
+#| eval: true
+#| echo: false
+count = 0
+for word in crusoe_exclusive:
+  print(word)
+  count += 1
+
+  if count == 100:
+    break
+```    
+
+  </td>
+  </tr>
+</table>
+
+### Sentiment Analysis (Beta)
+
+In playing around with the entire texts of these two novels, I wanted to explore an area of data science known as *sentiment analysis.*
+
+Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, categorizing it as positive, negative, or neutral. 
+
+To do this, I used the Natural Language Toolkit (NLTK) Python library to analyze each sentence in the text and determine the sentiment of that sentence. A limitation to this method is that I used NLTK's built-in VADER sentiment-analysis model, which was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts.
+
+In the future, utilizing custom training data instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature not adequately captured here.
+
+```{python}
+#| eval: true
+#| echo: false
+
+from src.sentiment import sentiment_analysis
+
+print(sentiment_analysis('assets/pamela.txt'))
+``` 

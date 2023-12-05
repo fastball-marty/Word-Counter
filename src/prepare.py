@@ -44,7 +44,16 @@ import nltk
 from nltk.tokenize.toktok import ToktokTokenizer
 from nltk.corpus import stopwords
 
-
+def basic_clean(string):
+    '''
+    This function takes in a string and
+    returns the string normalized.
+    '''
+    string = unicodedata.normalize('NFKD', string)\
+             .encode('ascii', 'ignore')\
+             .decode('utf-8', 'ignore')
+    string = re.sub(r'[^\w\s]', '', string).lower()
+    return string
 
 def tokenize(string):
     '''
