@@ -2,16 +2,19 @@ import os
 import csv
 import pandas as pd
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.tokenize.punkt import PunktSentenceTokenizer, PunktTrainer
 from nltk.tokenize import RegexpTokenizer
-from nltk.stem import WordNetLemmatizer
-from sklearn.metrics import classification_report
-from sklearn.metrics import confusion_matrix
 
-# Preprocess the text
-def preprocess_text(text):
+def preprocess_text(fileName):
+  """
+  This function takes a file of text and
+  splits it into its individual sentences
+  based off a custom regex pattern.
+  """
+   # Read file
+  file = open(fileName, "r")
+  text = file.read()
+  file.close()
+
   # cut token off at '.', '!', '?', ';', or ':'
   custom_pattern = r'\w.*?[.!?;:]'
 
@@ -24,9 +27,11 @@ def preprocess_text(text):
 
   return sentences
 
-
-# associate each token with a sentiment value, and store in a dictionary
 def get_sentiment(processed_text):
+  """
+  This function associates each token with a sentiment value,
+  and stores that token/sentiment key-value pair in a dictionary.
+  """
   sentiments = dict()
 
   for sentence in processed_text:
@@ -40,9 +45,11 @@ def get_sentiment(processed_text):
     
   return sentiments
 
-
-# convert a dictionary to csv
 def convert_to_csv(dictionary):
+  """
+  This function takes a dictionary and converts
+  it to a csv.
+  """
   # Specify the file name
   csv_file = 'output.csv'
 
@@ -57,34 +64,36 @@ def convert_to_csv(dictionary):
 
 # find sentences w/highest negative values and highest positive values
 def max_and_mins(dictionary):
-  top_5_neg = sorted(dictionary.items(), key=lambda x: x[1]['neg'], reverse=True)[:5]
-  print(len(top_5_neg))
+  """
+  This function takes a dictionary and finds the sentences with the 
+  highest negative and the highest positive sentiments. Only the first
+  15 for each sentiment are stored. The results are outputted to
+  a formatted string.
+  """
+  top_15_neg = sorted(dictionary.items(), key=lambda x: x[1]['neg'], reverse=True)[:15]
 
-  top_5_pos = sorted(dictionary.items(), key=lambda x: x[1]['pos'], reverse=True)[:5]
-  print(len(top_5_pos))
+  top_15_pos = sorted(dictionary.items(), key=lambda x: x[1]['pos'], reverse=True)[:15]
 
-  for item, values in top_5_neg:
-    print(f"{item}: {values}")
+  output = ""
 
-  for item, values in top_5_pos:
-    print(f"{item}: {values}")
+  output += "Highest Negative Sentiments: \n"
 
+  for item, values in top_15_neg:
+    output+= (f"{item}: {values}\n")
 
-if __name__ == '__main__':
+  output += "\n"  
 
-  # get abs path of this file
-  script_directory = os.path.dirname(os.path.abspath(__file__))
-  # add path to pamela
-  file_path = os.path.join(script_directory, '..', 'assets', 'pamela.txt')
+  output += "Highest Positive Sentiments: \n"
 
-  # read file if path exists
-  if os.path.exists(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-      text = file.read()
-  else:
-    print(f"The file {file_path} does not exist.")
+  for item, values in top_15_pos:
+    output += (f"{item}: {values}\n")
 
-  processed_text = preprocess_text(text)
-  sentiments = get_sentiment(processed_text)
-  max_and_mins(sentiments)
-  #convert_to_csv(sentiments)
+  return output
+
+def sentiment_analysis(fileName):
+  """
+  This function combines the above methods (excluding
+  convert_to_csv) to perform sentiment analysis on a
+  file.
+  """
+  return max_and_mins(get_sentiment(preprocess_text(fileName)))

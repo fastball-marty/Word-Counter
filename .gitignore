@@ -1,6 +1,4 @@
 # .gitignore
-mywordcloud.py
-prepare.py
 __pycache__/
 .DS_Store
 index.qmd

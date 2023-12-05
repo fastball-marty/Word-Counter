@@ -1,43 +1,69 @@
+# regular expression import
+import re
+
+# uni-code library
+import unicodedata
+
+"""
+basic_clean provided by @m3redithw
+
+see prepare.py for more info
+"""
+def basic_clean(string):
+    '''
+    This function takes in a string and
+    returns the string normalized.
+    '''
+    string = unicodedata.normalize('NFKD', string)\
+             .encode('ascii', 'ignore')\
+             .decode('utf-8', 'ignore')
+    string = re.sub(r'[^\w\s]', '', string).lower()
+    return string
+
 def word_count(fileName):
+  """
+  This function takes a txt file and cleans the text,
+  then counts the occurences of each word and sorts
+  from most common to least.
+  """
+  # Declare dictionary
   word_count = {}
 
   try:
+    # Read file
     file = open(fileName, "r")
-  
     content = file.read()
-
     file.close()
               
-    # Tokenize the content into words
-    words = content.split()
+    # Clean text 
+    words = basic_clean(content)
+
+    # Split into list
+    words = words.split()
 
     # Count the occurrences of each word
     for word in words:
-      # Remove punctuation and convert to lowercase for better counting accuracy
-      cleaned_word = word.strip(".,!;:?()[]—{}\"'").lower()
+      word_count[word] = word_count.get(word, 0) + 1
+      
+    # Sort from most occuring word to least
+    sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
 
-      # Update the word count in the dictionary
-      word_count[cleaned_word] = word_count.get(cleaned_word, 0) + 1
+    return sorted_word_count
 
+  # Handle exceptions
   except FileNotFoundError:
     print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as myapp.py?")
-  except PermissionError:
-    print(f"Error: Permission denied to open the file '{fileName}'.")
-  except IOError as e:
-    print(f"Error: An I/O error occurred while opening the file '{fileName}': {e}")
   except Exception as e:
     print(f"Error: An unexpected error occurred: {e}")
 
-  # sort from most occuring word to least
-  sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
-
-  return sorted_word_count
-
-
-
 def filtered_word_count(fileName):
-
-  # list of common filler words -- feel free to add/remove any
+  """
+  This function takes a txt file and cleans the text,
+  then counts the occurences of each word and sorts
+  from most common to least. This function ignores common
+  filler words.
+  """
+  # List of common filler words -- feel free to add/remove any
   common_function_words = [
     'the', 'and', 'a', 'to', 'of', 'in', 'is', 'you', 'that', 'it', 'he', 'was', 'for',
     'on', 'are', 'as', 'with', 'his', 'they', 'at', 'be', 'this', 'have', 'from',
@@ -51,48 +77,54 @@ def filtered_word_count(fileName):
     'very', 'upon', 'might', 'much', 'such', 'though', 'yet', 'too', 'any'
   ]
 
+  # Declare dictionaries
   word_count = {}
   filtered_word_count = {}
 
   try:
+    # Read file
     file = open(fileName, "r")
-  
     content = file.read()
-
     file.close()
               
-    # Tokenize the content into words
-    words = content.split()
+    # Clean text 
+    words = basic_clean(content)
+
+    # Split into list
+    words = words.split()
 
     # Count the occurrences of each word
     for word in words:
-      # Remove punctuation and convert to lowercase for better counting accuracy
-      cleaned_word = word.strip(".,!;:?()[]{}\"'").lower()
+      word_count[word] = word_count.get(word, 0) + 1
 
-      # Update the word count in the dictionary
-      word_count[cleaned_word] = word_count.get(cleaned_word, 0) + 1
-
-    # sort from most occuring word to lowest
+    # Sort from most occuring word to lowest
     sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
 
-    # remove entries from word_count that exist in common_words
+    # Remove entries from word_count that exist in common_words
     filtered_word_count = {word: count for word, count in sorted_word_count.items() if word.lower() not in common_function_words}
 
+    return filtered_word_count
+
+  # Handle exceptions
   except FileNotFoundError:
     print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as myapp.py?")
-  except PermissionError:
-    print(f"Error: Permission denied to open the file '{fileName}'.")
-  except IOError as e:
-    print(f"Error: An I/O error occurred while opening the file '{fileName}': {e}")
   except Exception as e:
     print(f"Error: An unexpected error occurred: {e}")
 
-  return filtered_word_count
-  
-
-
 def format_output(dictionary):
+  """
+  This function takes a dictionary and formats it
+  into a string where each key-value pair is on
+  its own line.
+  """
+  # Check if the dictionary is empty
+  if not dictionary:
+    return 
+
+  # Declare output string
   formatted_output = ""
+
+  # Add key-value pairs to string
   for key, value in dictionary.items():
     formatted_output += f"{key}: {value}\n"
 
@@ -100,8 +132,23 @@ def format_output(dictionary):
 
 
 def limit_format_output(dictionary):
+  """
+  This function takes a dictionary and formats it
+  into a string where each key-value pair is on
+  its own line. Only displays the first 100 entries
+  of the dictionary.
+  """
+  # Check if the dictionary is empty
+  if not dictionary:
+    return 
+  
+  # Declare output string
   formatted_output = ""
+
+  # Count to 100 
   count = 0
+
+  # Add key-value pairs to string
   for key, value in dictionary.items():
     formatted_output += f"{key}: {value}\n"
     count +=1
@@ -111,11 +158,23 @@ def limit_format_output(dictionary):
 
   return formatted_output
 
+def compare_dictionaries(dict1, dict2):
+  """
+  This function takes two dictionaries, and 
+  creates new lists to store keys not shared 
+  between dictionaries.
+  """
+  # Get the unique values from each dictionary
+  unique_values_dict1 = [key for key in dict1.keys() if key not in dict2.keys()]
+  unique_values_dict2 = [key for key in dict2.keys() if key not in dict1.keys()]
 
-# main to run program locally with custom file
+  return unique_values_dict1, unique_values_dict2
+
+
+
+# Main to run program locally with custom file
 if __name__ == "__main__":
-
-  # get .txt file name
+  # Get .txt file name
   file_name = input("Please enter a file name. (The file must be a .txt, and the file must be in the same directory as myapp.py): ")
 
   while True:

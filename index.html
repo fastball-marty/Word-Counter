@@ -6,8 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="emmacarl7">
-<meta name="dcterms.date" content="2023-11-29">
+<meta name="author" content="@emmacarl7">
+<meta name="dcterms.date" content="2023-12-04">
 
 <title>Word Counter for Text Comparisons</title>
 <style>
@@ -2992,8 +2992,10 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#all-words" id="toc-all-words" class="nav-link" data-scroll-target="#all-words">All words</a></li>
+  <li><a href="#count-all-words" id="toc-count-all-words" class="nav-link" data-scroll-target="#count-all-words">Count all words</a></li>
   <li><a href="#ignore-common-words" id="toc-ignore-common-words" class="nav-link" data-scroll-target="#ignore-common-words">Ignore common words</a></li>
+  <li><a href="#words-exclusive-to-each-novel" id="toc-words-exclusive-to-each-novel" class="nav-link" data-scroll-target="#words-exclusive-to-each-novel">Words exclusive to each novel</a></li>
+  <li><a href="#sentiment-analysis-beta" id="toc-sentiment-analysis-beta" class="nav-link" data-scroll-target="#sentiment-analysis-beta">Sentiment Analysis (Beta)</a></li>
   </ul>
 </nav>
 </div>
@@ -3011,14 +3013,14 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>emmacarl7 </p>
+             <p><span class="citation" data-cites="emmacarl7">@emmacarl7</span> </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 29, 2023</p>
+      <p class="date">December 4, 2023</p>
     </div>
   </div>
   
@@ -3050,15 +3052,16 @@ padding-left: 20px;
 
 <section id="overview" class="level3">
 <h3 class="anchored" data-anchor-id="overview">Overview</h3>
-<p>Below is a word counter that compares the frequency of words in <em>Pamela; or, Virtue Rewarded</em> by Samuel Richardson to <em>The Life and Adventures of Robinson Crusoe</em> by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, I, very, must). For sanity, only the first 100 words from each text are presented.</p>
-<p>Both text are in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines. Both texts provided by the Gutenberg Press, located at:</p>
-<p><a href="https://www.gutenberg.org/cache/epub/6124/pg6124-images.html" class="uri">https://www.gutenberg.org/cache/epub/6124/pg6124-images.html</a>.</p>
-<p><a href="https://www.gutenberg.org/cache/epub/521/pg521-images.html" class="uri">https://www.gutenberg.org/cache/epub/521/pg521-images.html</a></p>
-<p>The code for this project is available on Github for y’all to use. There, you will find instructions on how to count the words of any .txt file of your choosing. Link to GitHub:</p>
-<p><a href="https://github.com/emmacarl7/Word-Counter" class="uri">https://github.com/emmacarl7/Word-Counter</a></p>
+<p>Below is a word counter that compares the frequency of words in <em>Pamela; or, Virtue Rewarded</em> by Samuel Richardson to <em>The Life and Adventures of Robinson Crusoe</em> by Daniel Defoe. There are two separate counters: one includes every word, and the other filters out common words (i.e. and, the, to, very, must). <strong>For sanity, only the first 100 words are presented.</strong></p>
+<p>Also included is a table to display words exclusive to each novel, to display the unique vocabularies both implement. Again, <strong>only the first 100 words are presented.</strong></p>
+<p>Both text are in the public domain, and this script is intended for educational and research purposes in accordance with fair use guidelines. Both texts provided by the Gutenberg Press, located below:</p>
+<p>Pamela: <a href="https://www.gutenberg.org/cache/epub/6124/pg6124-images.html" target="_blank">https://www.gutenberg.org/cache/epub/6124/pg6124-images.html</a></p>
+<p>Crusoe: <a href="https://www.gutenberg.org/cache/epub/521/pg521-images.html" target="_blank">https://www.gutenberg.org/cache/epub/521/pg521-images.html</a></p>
+<p>The code for this project is available on Github for y’all to use. There, you will find instructions on how to count the words of any .txt file of your choosing.</p>
+<p>Link to GitHub: <a href="https://github.com/emmacarl7/Word-Counter" target="_blank">https://github.com/emmacarl7/Word-Counter</a></p>
 </section>
-<section id="all-words" class="level3">
-<h3 class="anchored" data-anchor-id="all-words">All words</h3>
+<section id="count-all-words" class="level3">
+<h3 class="anchored" data-anchor-id="count-all-words">Count all words</h3>
 
 <table>
 <tbody><tr>
@@ -3073,97 +3076,99 @@ Robinson Crusoe
 <td>
 <div class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
-<pre><code>i: 10207
-and: 9030
-to: 7518
-the: 5597
-you: 4783
-my: 4576
+<pre><code>Total words: 221113
+
+i: 10253
+and: 9033
+to: 7521
+the: 5601
+you: 4793
+my: 4584
 of: 3787
-me: 3685
-a: 3412
-said: 3139
-he: 2865
-for: 2862
-in: 2745
+me: 3686
+a: 3413
+said: 3140
+he: 2866
+for: 2865
+in: 2747
 that: 2648
-it: 2441
-as: 2402
+it: 2443
+as: 2408
 be: 2379
 have: 2302
 not: 2247
-but: 2052
+but: 2053
 she: 1918
 so: 1898
-your: 1836
-her: 1829
+your: 1861
+her: 1830
 was: 1755
-with: 1655
+with: 1656
 will: 1572
-is: 1526
-this: 1384
+is: 1527
+this: 1385
 all: 1239
-if: 1164
+if: 1168
 his: 1156
 had: 1145
 would: 983
 at: 963
-what: 944
-good: 846
+what: 945
+good: 848
 by: 812
+mrs: 812
 am: 809
-mrs: 808
-sir: 792
+sir: 795
 him: 783
 shall: 736
-dear: 728
-when: 708
-on: 707
-no: 705
+dear: 732
+when: 710
+on: 708
+no: 707
+well: 692
 should: 676
-well: 676
 are: 661
 do: 657
 master: 617
-one: 601
+one: 602
 very: 601
 see: 593
 upon: 591
 from: 589
-them: 577
-they: 577
+them: 578
+they: 578
 may: 575
+now: 552
 has: 548
-now: 548
 then: 546
 poor: 529
 more: 528
 or: 523
+how: 521
 which: 521
-how: 520
 could: 516
+pamela: 512
 know: 510
-pamela: 508
 can: 508
 much: 503
 think: 499
+we: 494
 out: 493
-we: 492
-any: 489
+any: 490
 say: 487
+mr: 466
 little: 464
-mr: 464
 been: 459
 must: 456
 up: 453
-too: 449
+too: 450
 such: 447
 lady: 446
 let: 442
 make: 423
-an: 406
+an: 407
 than: 406
-myself: 403
+myself: 404
 jewkes: 387
 come: 374
 hope: 370
@@ -3180,106 +3185,108 @@ made: 328
 <td>
 <div class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
-<pre><code>the: 5909
-i: 5087
-and: 4755
-to: 4256
+<pre><code>Total words: 120799
+
+the: 5912
+i: 5102
+and: 4758
+to: 4257
 of: 3513
-a: 2265
-my: 2121
+a: 2267
+my: 2125
 was: 1968
-in: 1943
-that: 1847
-it: 1795
+in: 1944
+that: 1854
+it: 1805
 had: 1553
 as: 1524
-for: 1290
-me: 1203
-but: 1082
-with: 1076
+for: 1297
+me: 1220
+but: 1089
+with: 1078
 not: 969
 which: 883
-he: 874
-them: 855
-so: 834
-this: 819
-they: 764
-all: 748
+he: 877
+them: 860
+so: 836
+this: 821
+they: 770
+all: 754
 or: 746
 at: 700
-him: 657
-be: 654
+him: 660
+be: 655
 on: 604
 were: 587
-we: 569
+we: 573
 by: 568
 could: 566
 upon: 541
-would: 481
-have: 481
+would: 482
+have: 482
 his: 462
 very: 452
-from: 444
-when: 438
-no: 424
+from: 445
+no: 443
+when: 439
 out: 422
-one: 419
-if: 412
-up: 381
-some: 381
-what: 365
+one: 421
+if: 419
+up: 382
+some: 382
+what: 376
 two: 358
 made: 350
-more: 344
+more: 345
 into: 340
 great: 340
+there: 339
 their: 336
-there: 330
-been: 315
+been: 317
 any: 312
 might: 301
+now: 296
 being: 295
-myself: 293
-now: 289
+myself: 294
 found: 289
 about: 289
 came: 283
 should: 282
 time: 277
 little: 271
-much: 263
+much: 265
 shore: 260
 did: 259
-first: 257
-than: 252
-before: 242
+first: 258
+than: 253
+before: 244
 other: 240
+our: 239
 after: 237
-our: 236
-boat: 235
-go: 224
-where: 224
-make: 222
+boat: 237
+go: 228
+then: 226
+where: 225
+make: 223
 such: 221
-ship: 217
+how: 219
+ship: 218
 these: 216
-how: 216
-then: 211
-again: 208
+again: 210
 went: 206
+us: 205
+well: 204
 way: 203
-us: 203
 an: 201
+three: 201
 down: 200
-three: 200
-place: 199
-come: 197
+you: 200
+place: 200
+come: 198
 though: 195
-is: 187
+is: 191
 began: 185
 island: 182
-well: 181
-good: 177
 </code></pre>
 </div>
 </div>
@@ -3304,56 +3311,57 @@ Robinson Crusoe
 <td>
 <div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
-<pre><code>i: 10207
-good: 846
-mrs: 808
-sir: 792
-dear: 728
-well: 676
+<pre><code>i: 10253
+good: 848
+mrs: 812
+sir: 795
+dear: 732
+well: 692
 master: 617
 poor: 529
+pamela: 512
 know: 510
-pamela: 508
 think: 499
 say: 487
+mr: 466
 little: 464
-mr: 464
 must: 456
 lady: 446
 let: 442
-myself: 403
+myself: 404
 jewkes: 387
 hope: 370
 thought: 330
 own: 327
 sure: 313
+o: 310
 thing: 310
 before: 309
-o: 305
 great: 296
+jervis: 288
 father: 287
-jervis: 287
 tell: 287
 heart: 279
 take: 278
+give: 277
 came: 276
-give: 276
+dont: 272
 never: 271
-don’t: 269
-every: 261
+every: 262
+why: 262
 letter: 259
-why: 258
 here: 251
+god: 249
 indeed: 249
-god: 248
 us: 245
+ill: 241
 again: 240
-nothing: 235
+nothing: 236
 most: 235
 went: 235
 happy: 231
-after: 228
-till: 227
+after: 229
+till: 228
 only: 225
 mother: 219
 pray: 219
@@ -3368,17 +3376,16 @@ kind: 204
 both: 203
 took: 202
 thou: 202
-i’ll: 201
-our: 196
-because: 196
+our: 198
+because: 197
 ever: 194
 mind: 193
-williams: 192
-madam: 185
+williams: 193
+madam: 186
 always: 181
 house: 178
 better: 171
-goodness: 169
+goodness: 170
 quite: 167
 told: 167
 where: 165
@@ -3401,9 +3408,9 @@ just: 145
 gave: 144
 got: 144
 over: 142
-stay: 140
+ladies: 141
+stay: 141
 since: 139
-reason: 138
 </code></pre>
 </div>
 </div>
@@ -3411,50 +3418,50 @@ reason: 138
 <td>
 <div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
-<pre><code>i: 5087
+<pre><code>i: 5102
 great: 340
 being: 295
-myself: 293
+myself: 294
 found: 289
 came: 283
 little: 271
 shore: 260
-before: 242
+before: 244
+our: 239
 after: 237
-our: 236
-boat: 235
-where: 224
-ship: 217
-again: 208
+boat: 237
+where: 225
+ship: 218
+again: 210
 went: 206
-us: 203
-three: 200
-place: 199
+us: 205
+well: 204
+three: 201
+place: 200
 began: 185
 island: 182
-well: 181
-good: 177
-sea: 167
+good: 179
+friday: 175
+sea: 168
 thought: 165
 over: 165
 things: 164
-friday: 157
 having: 156
 saw: 154
 indeed: 147
+men: 146
+away: 146
 took: 146
-men: 145
-away: 145
-nothing: 144
-life: 142
+nothing: 145
+life: 143
+man: 143
+god: 141
 never: 140
-man: 139
 knew: 138
-god: 137
-off: 134
+off: 135
 say: 129
+however: 128
 without: 126
-however: 126
 till: 125
 only: 125
 side: 123
@@ -3471,7 +3478,7 @@ next: 109
 also: 108
 while: 105
 set: 104
-captain: 103
+captain: 104
 gave: 100
 mind: 100
 just: 99
@@ -3480,37 +3487,37 @@ resolved: 98
 work: 98
 most: 97
 enough: 97
+done: 97
+here: 97
 left: 97
 those: 96
 must: 96
 every: 94
-here: 94
-done: 92
 nor: 90
-last: 89
+last: 90
 put: 89
 ground: 88
 back: 87
 hands: 84
 killed: 83
-still: 82
+still: 83
 soon: 82
+country: 81
 night: 81
-country: 80
 called: 80
+let: 80
+head: 79
 condition: 79
-head: 78
 world: 78
-let: 78
 pieces: 78
+going: 77
 home: 77
 even: 77
-going: 76
+days: 76
 least: 76
 think: 75
-carried: 75
-hand: 74
-making: 74
+years: 75
+gun: 75
 </code></pre>
 </div>
 </div>
@@ -3518,6 +3525,280 @@ making: 74
 </tr>
 
 </tbody></table>
+</section>
+<section id="words-exclusive-to-each-novel" class="level3">
+<h3 class="anchored" data-anchor-id="words-exclusive-to-each-novel">Words exclusive to each novel</h3>
+
+<table>
+<tbody><tr>
+<th>
+Pamela
+</th>
+<th>
+Robinson Crusoe
+</th>
+</tr>
+<tr>
+<td>
+<div class="cell" data-execution_count="6">
+<div class="cell-output cell-output-stdout">
+<pre><code>mrs
+pamela
+lady
+jewkes
+jervis
+williams
+madam
+girl
+ladies
+ladyship
+sister
+youll
+shew
+chariot
+john
+herself
+davers
+dearest
+closet
+longman
+darnford
+ladys
+thats
+andrews
+sex
+thursday
+peters
+makes
+dare
+unworthy
+guineas
+deserve
+colbrand
+jones
+proud
+permit
+simon
+window
+merit
+vile
+marry
+stairs
+mistress
+nan
+wench
+parlour
+dutiful
+im
+dine
+shewed
+naughty
+etc
+monday
+marriage
+disgrace
+virtuous
+yesterday
+honours
+shant
+b
+ladyships
+vexed
+pamelas
+anger
+surely
+parson
+jonathan
+wednesday
+saturday
+thomas
+chapel
+saucy
+intentions
+plot
+loves
+maids
+wept
+faults
+tuesday
+beck
+displeasure
+noble
+bedfordshire
+kinsman
+favours
+folks
+lincolnshire
+wit
+shewn
+trials
+arthur
+kiss
+lovely
+methinks
+ah
+reputation
+ungrateful
+airing
+maiden
+overcome</code></pre>
+</div>
+</div>
+</td>
+<td>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>island
+killed
+gun
+savages
+shot
+corn
+cave
+tree
+powder
+goats
+savage
+tent
+wreck
+current
+habitation
+fired
+brazils
+plantation
+rain
+weather
+xury
+prisoners
+sand
+canoe
+canoes
+cargo
+creek
+raft
+castle
+devoured
+loaded
+rocks
+tame
+spaniard
+tobacco
+showed
+signs
+chests
+wolves
+bade
+negroes
+blew
+anchor
+mate
+rice
+stakes
+grapes
+heat
+mountains
+beasts
+lisbon
+barley
+cabin
+guns
+east
+fence
+governor
+north
+kid
+june
+spaniards
+vessel
+seed
+snow
+daily
+seamen
+sails
+leagues
+ammunition
+muskets
+crop
+moidores
+hollow
+islands
+hatchet
+portuguese
+goat
+bower
+pistol
+stayed
+league
+knocked
+raisins
+pots
+print
+earthen
+boards
+fowls
+enclosure
+fortification
+rainy
+eddy
+flock
+society
+africa
+latitude
+sallee
+bullets
+south
+brazil</code></pre>
+</div>
+</div>
+</td>
+</tr>
+
+</tbody></table>
+</section>
+<section id="sentiment-analysis-beta" class="level3">
+<h3 class="anchored" data-anchor-id="sentiment-analysis-beta">Sentiment Analysis (Beta)</h3>
+<p>In playing around with the entire texts of these two novels, I wanted to explore an area of data science known as <em>sentiment analysis.</em></p>
+<p>Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, categorizing it as positive, negative, or neutral.</p>
+<p>To do this, I used the Natural Language Toolkit (NLTK) Python library to analyze each sentence in the text and determine the sentiment of that sentence. A limitation to this method is that I used NLTK’s built-in VADER sentiment-analysis model, which was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts.</p>
+<p>In the future, utilizing custom training data instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature not adequately captured here.</p>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>Highest Negative Sentiments: 
+Alas!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.3382}
+O frightful!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.5562}
+Ruin!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.6239}
+shame!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.5255}
+disgrace!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.5411}
+Foolish!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.3382}
+No, no!: {&#39;neg&#39;: 1.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.5707}
+I cried sadly for vexation;: {&#39;neg&#39;: 0.892, &#39;neu&#39;: 0.108, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.8074}
+Wicked, wicked man!: {&#39;neg&#39;: 0.876, &#39;neu&#39;: 0.124, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.7959}
+All sadly vile:: {&#39;neg&#39;: 0.873, &#39;neu&#39;: 0.127, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.7845}
+sad poor stuff!: {&#39;neg&#39;: 0.867, &#39;neu&#39;: 0.133, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.7574}
+Poor, poor man!: {&#39;neg&#39;: 0.867, &#39;neu&#39;: 0.133, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.7574}
+I wept bitterly, however;: {&#39;neg&#39;: 0.857, &#39;neu&#39;: 0.143, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.7184}
+I meant no harm;: {&#39;neg&#39;: 0.851, &#39;neu&#39;: 0.149, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.6908}
+I meant no harm.: {&#39;neg&#39;: 0.851, &#39;neu&#39;: 0.149, &#39;pos&#39;: 0.0, &#39;compound&#39;: -0.6908}
+
+Highest Positive Sentiments: 
+Innocent!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.4003}
+Well!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.3382}
+Sweet excellence!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.8122}
+I welcome!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.5093}
+yes, surely!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.7088}
+O good God!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.6476}
+O help!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.4574}
+happy.: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.5719}
+O God!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.3382}
+Kind, lovely charmer!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.8858}
+contented;: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.0, &#39;pos&#39;: 1.0, &#39;compound&#39;: 0.34}
+Great and good God!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.096, &#39;pos&#39;: 0.904, &#39;compound&#39;: 0.8553}
+God bless your honour!: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.101, &#39;pos&#39;: 0.899, &#39;compound&#39;: 0.8356}
+I kissed his dear hand:: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.106, &#39;pos&#39;: 0.894, &#39;compound&#39;: 0.8126}
+happy, happy Mr.: {&#39;neg&#39;: 0.0, &#39;neu&#39;: 0.119, &#39;pos&#39;: 0.881, &#39;compound&#39;: 0.8126}
+</code></pre>
+</div>
+</div>
 </section>
 
 </main>
