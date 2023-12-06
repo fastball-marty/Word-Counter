@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="@emmacarl7">
 
 <title>Word Counter for Text Comparisons</title>
 <style>
@@ -3009,12 +3008,6 @@ vertical-align: -.125em;
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p><span class="citation" data-cites="emmacarl7">@emmacarl7</span> </p>
-          </div>
-  </div>
     
   
     
@@ -3754,10 +3747,11 @@ brazil</code></pre>
 </section>
 <section id="sentiment-analysis-beta" class="level3">
 <h3 class="anchored" data-anchor-id="sentiment-analysis-beta">Sentiment Analysis (Beta)</h3>
-<p>Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, with categorizations of <strong>positive, negative, and neutral.</strong></p>
-<p>To do this, I used the <strong>Natural Language Toolkit</strong> (nltk) Python library to analyze each sentence in the text and determine the sentiment of that sentence. In addition, I used nltk’s built-in sentiment analysis rules-based tool, VADER <strong>(Valence Aware Dictionary and sEntiment Reasoner).</strong> VADER was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts, so it does not provide an ideal model.</p>
-<p>In the future, utilizing custom training data instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature not adequately captured here.</p>
-<p>Each sentence in <em>Pamela</em> was given a score for positive, neutral, negative, and compound (an overall score). Below are the 15 sentences with the highest negative score, and the 15 sentences with the highest positive score.</p>
+<p>Using the sentiment analysis tools <em>nltk</em> and <em>VADER</em>, each sentence in <em>Pamela</em> was given a numerical value for its <strong>positive, neutral, negative sentiments.</strong> Below are the 15 sentences with the highest negative score, and the 15 sentences with the highest positive score.</p>
+<ul>
+<li><p><em>compound reflects an overall score calculated from the other values.</em></p></li>
+<li><p>VADER was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts, so it does not provide an ideal model. Utilizing custom training models instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature.</p></li>
+</ul>
 <div class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Highest Negative Sentiments: 
