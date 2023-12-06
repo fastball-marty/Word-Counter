@@ -1,6 +1,10 @@
+import re
+import unicodedata
+
+"""
 MIT License
 
-Copyright (c) 2023 Emma Carlson
+Copyright (c) 2022 Meredith Wang
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +23,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+# This function is borrowed from https://github.com/m3redithw/data-science-visualizations/blob/main/WordClouds/prepare.py
+# Original Author: Meredith Wang
+# License: MIT License
+def basic_clean(string):
+    '''
+    This function takes in a string and
+    returns the string normalized.
+    '''
+    string = unicodedata.normalize('NFKD', string)\
+             .encode('ascii', 'ignore')\
+             .decode('utf-8', 'ignore')
+    string = re.sub(r'[^\w\s]', '', string).lower()
+    return string

@@ -1,22 +1,5 @@
-# regular expression import
-import re
-
-# uni-code library
-import unicodedata
-
-
-# basic_clean provided by @m3redithw
-# see prepare.py for more info
-def basic_clean(string):
-    '''
-    This function takes in a string and
-    returns the string normalized.
-    '''
-    string = unicodedata.normalize('NFKD', string)\
-             .encode('ascii', 'ignore')\
-             .decode('utf-8', 'ignore')
-    string = re.sub(r'[^\w\s]', '', string).lower()
-    return string
+# see clean.py
+import clean
 
 def word_count(fileName, filterStopWords):
   """
@@ -49,7 +32,7 @@ def word_count(fileName, filterStopWords):
     file.close()
               
     # Clean text, 
-    words = basic_clean(content)
+    words = clean.basic_clean(content)
 
     # Split into list
     words = words.split()
@@ -149,5 +132,3 @@ if __name__ == "__main__":
     with open('output.txt', 'w') as file:
       # Write content to the file
       file.write(format_output(word_count(file_name, True), None))
-
-  

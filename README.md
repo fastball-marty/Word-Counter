@@ -6,7 +6,9 @@
 ## Description
 This Github repository stores the code that counts the occurences of words in a .txt file, and it can be used for any body of text.
 
-<https://github.com/emmacarl7/Word-Counter>
+Link to repo: <https://github.com/emmacarl7/Word-Counter>
+
+Link to website: <https://emmacarl7.github.io/Word-Counter>
 
 Below are instructions on how to run this code on your machine, and how to count your own custom .txt file.
 
