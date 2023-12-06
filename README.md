@@ -63,3 +63,5 @@ Alternatively, if you have an older version of python, enter:
     python wordcounter.py
 
 The program should now be running. Enter the name of your file to count its words, and follow the additional prompts.
+
+The results of wordcounter.py are stored in an automatically created file called *output.txt* in the same directory. **If a file named output.txt already exists in this directory, it will be overwritten.**

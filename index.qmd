@@ -34,29 +34,41 @@ format:
 ```{python}
 #| eval: true
 #| echo: false
-from src.wordcounter import word_count, filtered_word_count, limit_format_output, compare_dictionaries
+from src.wordcounter import word_count, format_output, compare_dictionaries
+from src.sentiment import get_sentiment, sentiment_analysis, average_sentiment
 
 # pamela all
-pamela_dictionary = word_count('assets/pamela.txt')
+pamela_dictionary = word_count('assets/pamela.txt', False)
 pamela_sum = sum(pamela_dictionary.values())
-pamela_string = limit_format_output(pamela_dictionary)
+pamela_string = format_output(pamela_dictionary, 100)
 
 # crusoe all
-crusoe_dictionary = word_count('assets/crusoe.txt')
+crusoe_dictionary = word_count('assets/crusoe.txt', False)
 crusoe_sum = sum(crusoe_dictionary.values())
-crusoe_string = limit_format_output(crusoe_dictionary)
+crusoe_string = format_output(crusoe_dictionary, 100)
 
 # pamela filtered
-filtered_pamela_dictionary = filtered_word_count('assets/pamela.txt')
-filtered_pamela_string = limit_format_output(filtered_pamela_dictionary)
+filtered_pamela_dictionary = word_count('assets/pamela.txt', True)
+filtered_pamela_string = format_output(filtered_pamela_dictionary, 100)
 
 # crusoe filtered
-filtered_crusoe_dictionary = filtered_word_count('assets/crusoe.txt')
-filtered_crusoe_string = limit_format_output(filtered_crusoe_dictionary)
+filtered_crusoe_dictionary = word_count('assets/crusoe.txt', True)
+filtered_crusoe_string = format_output(filtered_crusoe_dictionary, 100)
 
 # compare texts
 pamela_exclusive, crusoe_exclusive = compare_dictionaries(pamela_dictionary, crusoe_dictionary)
 
+# pamela sentiment
+truncated_pamela = pamela_exclusive[:100]
+pamela_sentiment = get_sentiment(truncated_pamela)
+
+# crusoe sentiment
+truncated_crusoe = crusoe_exclusive[:100]
+crusoe_sentiment = get_sentiment(truncated_crusoe)
+
+# sentiment averages
+pamela_avg = average_sentiment(pamela_sentiment)
+crusoe_avg = average_sentiment(crusoe_sentiment)
 ```
 
 ### Overview
@@ -77,6 +89,8 @@ Link to GitHub: <a href="https://github.com/emmacarl7/Word-Counter" target="_bla
 
 
 ### Count all words
+
+Counts the frequency of all words in *Pamela* and *Robinson Crusoe* and displays the 100 most popular words for each. 
 
 <table>
   <tr>
@@ -112,6 +126,10 @@ print (crusoe_string)
 
 ### Ignore common words
 
+Counts the frequency of all words in *Pamela* and *Robinson Crusoe* excluding words in list of common words. 
+
+**List of common words:** the, and, a, to, of, in, is, you, that, it, he, was, for, on, are, as, with, his, they, at, be, this, have, from, or, one, had, by, but, not, what, all, were, we, when, your, can, said, there, an, each, which, she, do, how, their, if, will, up, other, about, out, many, then, them, these, so, some, her, would, make, like, him, into, time, has, look, two, more, go, see, no, way, could, people, than, first, been, who, oil, its, now, find, long, down, day, did, get, come, made, may, part, me, am, shall, should, very, upon, might, much, such, though, yet, too, any.
+
 <table>
   <tr>
     <th>Pamela</th>
@@ -143,6 +161,9 @@ print (filtered_crusoe_string)
 
 
 ### Words exclusive to each novel
+
+Displays the 100 most common words in *Pamela* that are not in  *Robinson Crusoe* and vice versa. 
+
 <table>
   <tr>
     <th>Pamela</th>
@@ -185,13 +206,14 @@ for word in crusoe_exclusive:
 
 ### Sentiment Analysis (Beta)
 
-In playing around with the entire texts of these two novels, I wanted to explore an area of data science known as *sentiment analysis.*
+Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, with categorizations of **positive, negative, and neutral.** 
 
-Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, categorizing it as positive, negative, or neutral. 
-
-To do this, I used the Natural Language Toolkit (NLTK) Python library to analyze each sentence in the text and determine the sentiment of that sentence. A limitation to this method is that I used NLTK's built-in VADER sentiment-analysis model, which was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts.
+To do this, I used the **Natural Language Toolkit** (nltk) Python library to analyze each sentence in the text and determine the sentiment of that sentence. In addition, I used nltk's built-in sentiment analysis rules-based tool, VADER **(Valence Aware Dictionary and sEntiment Reasoner).** VADER was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts, so it does not provide an ideal model.
 
 In the future, utilizing custom training data instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature not adequately captured here.
+
+Each sentence in *Pamela* was given a score for positive, neutral, negative, and compound (an overall score). Below are the 15 sentences with the highest negative score, and the 15 sentences with the highest positive score.
+
 
 ```{python}
 #| eval: true

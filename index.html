@@ -3055,6 +3055,7 @@ padding-left: 20px;
 </section>
 <section id="count-all-words" class="level3">
 <h3 class="anchored" data-anchor-id="count-all-words">Count all words</h3>
+<p>Counts the frequency of all words in <em>Pamela</em> and <em>Robinson Crusoe</em> and displays the 100 most popular words for each.</p>
 
 <table>
 <tbody><tr>
@@ -3290,6 +3291,8 @@ island: 182
 </section>
 <section id="ignore-common-words" class="level3">
 <h3 class="anchored" data-anchor-id="ignore-common-words">Ignore common words</h3>
+<p>Counts the frequency of all words in <em>Pamela</em> and <em>Robinson Crusoe</em> excluding words in list of common words.</p>
+<p><strong>List of common words:</strong> the, and, a, to, of, in, is, you, that, it, he, was, for, on, are, as, with, his, they, at, be, this, have, from, or, one, had, by, but, not, what, all, were, we, when, your, can, said, there, an, each, which, she, do, how, their, if, will, up, other, about, out, many, then, them, these, so, some, her, would, make, like, him, into, time, has, look, two, more, go, see, no, way, could, people, than, first, been, who, oil, its, now, find, long, down, day, did, get, come, made, may, part, me, am, shall, should, very, upon, might, much, such, though, yet, too, any.</p>
 
 <table>
 <tbody><tr>
@@ -3305,6 +3308,7 @@ Robinson Crusoe
 <div class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>i: 10253
+my: 4584
 good: 848
 mrs: 812
 sir: 795
@@ -3403,7 +3407,6 @@ got: 144
 over: 142
 ladies: 141
 stay: 141
-since: 139
 </code></pre>
 </div>
 </div>
@@ -3412,6 +3415,7 @@ since: 139
 <div class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>i: 5102
+my: 2125
 great: 340
 being: 295
 myself: 294
@@ -3449,6 +3453,7 @@ nothing: 145
 life: 143
 man: 143
 god: 141
+water: 141
 never: 140
 knew: 138
 off: 135
@@ -3509,8 +3514,6 @@ even: 77
 days: 76
 least: 76
 think: 75
-years: 75
-gun: 75
 </code></pre>
 </div>
 </div>
@@ -3521,6 +3524,7 @@ gun: 75
 </section>
 <section id="words-exclusive-to-each-novel" class="level3">
 <h3 class="anchored" data-anchor-id="words-exclusive-to-each-novel">Words exclusive to each novel</h3>
+<p>Displays the 100 most common words in <em>Pamela</em> that are not in <em>Robinson Crusoe</em> and vice versa.</p>
 
 <table>
 <tbody><tr>
@@ -3750,10 +3754,10 @@ brazil</code></pre>
 </section>
 <section id="sentiment-analysis-beta" class="level3">
 <h3 class="anchored" data-anchor-id="sentiment-analysis-beta">Sentiment Analysis (Beta)</h3>
-<p>In playing around with the entire texts of these two novels, I wanted to explore an area of data science known as <em>sentiment analysis.</em></p>
-<p>Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, categorizing it as positive, negative, or neutral.</p>
-<p>To do this, I used the Natural Language Toolkit (NLTK) Python library to analyze each sentence in the text and determine the sentiment of that sentence. A limitation to this method is that I used NLTK’s built-in VADER sentiment-analysis model, which was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts.</p>
+<p>Sentiment analysis is a data science technique that involves using natural language processing and machine learning to analyze and determine the sentiment expressed in a piece of text, with categorizations of <strong>positive, negative, and neutral.</strong></p>
+<p>To do this, I used the <strong>Natural Language Toolkit</strong> (nltk) Python library to analyze each sentence in the text and determine the sentiment of that sentence. In addition, I used nltk’s built-in sentiment analysis rules-based tool, VADER <strong>(Valence Aware Dictionary and sEntiment Reasoner).</strong> VADER was specifically designed for sentiment analysis of text that is often encountered in social media, product reviews, and other short texts, so it does not provide an ideal model.</p>
 <p>In the future, utilizing custom training data instead of VADER would enhance accuracy by tailoring the analysis to the specific domain of 18th century literature not adequately captured here.</p>
+<p>Each sentence in <em>Pamela</em> was given a score for positive, neutral, negative, and compound (an overall score). Below are the 15 sentences with the highest negative score, and the 15 sentences with the highest positive score.</p>
 <div class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Highest Negative Sentiments: 

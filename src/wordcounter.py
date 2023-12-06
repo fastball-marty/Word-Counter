@@ -18,14 +18,29 @@ def basic_clean(string):
     string = re.sub(r'[^\w\s]', '', string).lower()
     return string
 
-def word_count(fileName):
+def word_count(fileName, filterStopWords):
   """
-  This function takes a txt file and cleans the text,
+  This function takes a txt file and normalizes the text,
   then counts the occurences of each word and sorts
-  from most common to least.
+  from most common to least. Boolean filterStopWords used
+  to optionally filter out common words.
   """
   # Declare dictionary
   word_count = {}
+
+  # List of common filler words -- feel free to add/remove any
+  stopwords = [
+    'the', 'and', 'a', 'to', 'of', 'in', 'is', 'you', 'that', 'it', 'he', 'was', 'for',
+    'on', 'are', 'as', 'with', 'his', 'they', 'at', 'be', 'this', 'have', 'from',
+    'or', 'one', 'had', 'by', 'but', 'not', 'what', 'all', 'were', 'we', 'when',
+    'your', 'can', 'said', 'there', 'an', 'each', 'which', 'she', 'do', 'how',
+    'their', 'if', 'will', 'up', 'other', 'about', 'out', 'many', 'then', 'them', 'these',
+    'so', 'some', 'her', 'would', 'make', 'like', 'him', 'into', 'time', 'has', 'look',
+    'two', 'more', 'go', 'see', 'no', 'way', 'could', 'people', 
+    'than', 'first', 'been', 'who', 'its', 'now', 'find', 'long',
+    'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part', 'me', 'am', 'shall', 'should',
+    'very', 'upon', 'might', 'much', 'such', 'though', 'yet', 'too', 'any'
+  ]
 
   try:
     # Read file
@@ -33,7 +48,7 @@ def word_count(fileName):
     content = file.read()
     file.close()
               
-    # Clean text 
+    # Clean text, 
     words = basic_clean(content)
 
     # Split into list
@@ -46,6 +61,11 @@ def word_count(fileName):
     # Sort from most occuring word to least
     sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
 
+    # If chose to filter stopwords,
+    if (filterStopWords):
+      # Remove entries from word_count that exist in stopwords
+      sorted_word_count = {word: count for word, count in sorted_word_count.items() if word.lower() not in stopwords}
+
     return sorted_word_count
 
   # Handle exceptions
@@ -54,66 +74,12 @@ def word_count(fileName):
   except Exception as e:
     print(f"Error: An unexpected error occurred: {e}")
 
-def filtered_word_count(fileName):
-  """
-  This function takes a txt file and cleans the text,
-  then counts the occurences of each word and sorts
-  from most common to least. This function ignores common
-  filler words.
-  """
-  # List of common filler words -- feel free to add/remove any
-  common_function_words = [
-    'the', 'and', 'a', 'to', 'of', 'in', 'is', 'you', 'that', 'it', 'he', 'was', 'for',
-    'on', 'are', 'as', 'with', 'his', 'they', 'at', 'be', 'this', 'have', 'from',
-    'or', 'one', 'had', 'by', 'word', 'but', 'not', 'what', 'all', 'were', 'we', 'when',
-    'your', 'can', 'said', 'there', 'use', 'an', 'each', 'which', 'she', 'do', 'how',
-    'their', 'if', 'will', 'up', 'other', 'about', 'out', 'many', 'then', 'them', 'these',
-    'so', 'some', 'her', 'would', 'make', 'like', 'him', 'into', 'time', 'has', 'look',
-    'two', 'more', 'write', 'go', 'see', 'number', 'no', 'way', 'could', 'people', 'my',
-    'than', 'first', 'water', 'been', 'call', 'who', 'oil', 'its', 'now', 'find', 'long',
-    'down', 'day', 'did', 'get', 'come', 'made', 'may', 'part', 'me', 'am', 'shall', 'should',
-    'very', 'upon', 'might', 'much', 'such', 'though', 'yet', 'too', 'any'
-  ]
-
-  # Declare dictionaries
-  word_count = {}
-  filtered_word_count = {}
-
-  try:
-    # Read file
-    file = open(fileName, "r")
-    content = file.read()
-    file.close()
-              
-    # Clean text 
-    words = basic_clean(content)
-
-    # Split into list
-    words = words.split()
-
-    # Count the occurrences of each word
-    for word in words:
-      word_count[word] = word_count.get(word, 0) + 1
-
-    # Sort from most occuring word to lowest
-    sorted_word_count = dict(sorted(word_count.items(), key=lambda item: item[1], reverse=True))
-
-    # Remove entries from word_count that exist in common_words
-    filtered_word_count = {word: count for word, count in sorted_word_count.items() if word.lower() not in common_function_words}
-
-    return filtered_word_count
-
-  # Handle exceptions
-  except FileNotFoundError:
-    print(f"Error: The file '{fileName}' does not exist. Is the file located in the same directory as wordcounter.py?")
-  except Exception as e:
-    print(f"Error: An unexpected error occurred: {e}")
-
-def format_output(dictionary):
+def format_output(dictionary, size):
   """
   This function takes a dictionary and formats it
   into a string where each key-value pair is on
-  its own line.
+  its own line. size optional paramater to
+  limit dictionary to certain length.
   """
   # Check if the dictionary is empty
   if not dictionary:
@@ -122,37 +88,21 @@ def format_output(dictionary):
   # Declare output string
   formatted_output = ""
 
-  # Add key-value pairs to string
-  for key, value in dictionary.items():
-    formatted_output += f"{key}: {value}\n"
+  # If size exists, and size < length of dictionnary
+  if (size) and (size < len(dictionary)):
+    count = 0
+    # Add size # of key-value pairs to string
+    for key, value in dictionary.items():
+      formatted_output += f"{key}: {value}\n"
+      count += 1
 
-  return formatted_output
+      if (count == size):
+        break
 
-
-def limit_format_output(dictionary):
-  """
-  This function takes a dictionary and formats it
-  into a string where each key-value pair is on
-  its own line. Only displays the first 100 entries
-  of the dictionary.
-  """
-  # Check if the dictionary is empty
-  if not dictionary:
-    return 
-  
-  # Declare output string
-  formatted_output = ""
-
-  # Count to 100 
-  count = 0
-
-  # Add key-value pairs to string
-  for key, value in dictionary.items():
-    formatted_output += f"{key}: {value}\n"
-    count +=1
-
-    if (count == 100):
-      break
+  else: 
+    # Add all key-value pairs to string
+    for key, value in dictionary.items():
+      formatted_output += f"{key}: {value}\n"
 
   return formatted_output
 
@@ -167,8 +117,6 @@ def compare_dictionaries(dict1, dict2):
   unique_values_dict2 = [key for key in dict2.keys() if key not in dict1.keys()]
 
   return unique_values_dict1, unique_values_dict2
-
-
 
 # Main to run program locally with custom file
 if __name__ == "__main__":
@@ -190,8 +138,16 @@ if __name__ == "__main__":
 
   # include filler words
   if option == 0:
-    print (format_output(word_count(file_name)))
-  
+    # Open a file for writing (creates the file if it doesn't exist)
+    with open('output.txt', 'w') as file:
+      # Write content to the file
+      file.write(format_output(word_count(file_name, False), None))
+
   # ignore filler words
   else:
-    print (format_output(filtered_word_count(file_name)))
+    # Open a file for writing (creates the file if it doesn't exist)
+    with open('output.txt', 'w') as file:
+      # Write content to the file
+      file.write(format_output(word_count(file_name, True), None))
+
+  

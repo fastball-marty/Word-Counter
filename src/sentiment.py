@@ -32,6 +32,7 @@ def get_sentiment(processed_text):
   This function associates each token with a sentiment value,
   and stores that token/sentiment key-value pair in a dictionary.
   """
+
   sentiments = dict()
 
   for sentence in processed_text:
@@ -62,7 +63,6 @@ def convert_to_csv(dictionary):
     for key, value in dictionary.items():
         writer.writerow([key, value])
 
-# find sentences w/highest negative values and highest positive values
 def max_and_mins(dictionary):
   """
   This function takes a dictionary and finds the sentences with the 
@@ -97,3 +97,30 @@ def sentiment_analysis(fileName):
   file.
   """
   return max_and_mins(get_sentiment(preprocess_text(fileName)))
+
+def average_sentiment(dictionary):
+  """
+  This function takes a dictionary of sentiments and computes
+  its average pos, neg, neu, compound values.
+  """
+
+  # Initialize variables to store cumulative sums
+  total_pos, total_neg, total_neu, total_compound = 0, 0, 0, 0
+  num_entries = len(dictionary)
+
+  # Calculate cumulative sums
+  for values_dict in dictionary.values():
+    total_pos += values_dict.get('pos', 0)
+    total_neg += values_dict.get('neg', 0)
+    total_neu += values_dict.get('neu', 0)
+    total_compound += values_dict.get('compound', 0)
+
+  # Calculate averages
+  avg_pos = round(total_pos / num_entries, 4)
+  avg_neg = round(total_neg / num_entries, 4)
+  avg_neu = round(total_neu / num_entries, 4)
+  avg_compound = round(total_compound / num_entries, 4)
+  
+  # Create and return the result dictionary
+  result_dict = {'avg_pos': avg_pos, 'avg_neg': avg_neg, 'avg_neu': avg_neu, 'avg_compound': avg_compound}
+  return result_dict
