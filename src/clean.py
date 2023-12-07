@@ -25,7 +25,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-# This function is borrowed from https://github.com/m3redithw/data-science-visualizations/blob/main/WordClouds/prepare.py
+# This function is credited to https://github.com/m3redithw/data-science-visualizations/blob/main/WordClouds/prepare.py
 # Original Author: Meredith Wang
 # License: MIT License
 def basic_clean(string):

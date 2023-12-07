@@ -1,7 +1,6 @@
 # Custom Word Counter 
 * Author(s): emmacarl7
-* Published: 11.27.2023
-* Copyright: License.txt
+* Published: 12.06.2023
 
 ## Description
 This Github repository stores the code that counts the occurences of words in a .txt file, and it can be used for any body of text.
