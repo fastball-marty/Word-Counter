@@ -1,13 +1,11 @@
 # Custom Word Counter 
-* Author(s): emmacarl7
+* Author(s): fastball-marty
 * Published: 12.06.2023
 
 ## Description
 This Github repository stores the code that counts the occurences of words in a .txt file, and it can be used for any body of text.
 
-Link to repo: <https://github.com/emmacarl7/Word-Counter>
-
-Link to website: <https://emmacarl7.github.io/Word-Counter>
+Link to website: <https://fastball-marty.github.io/Word-Counter>
 
 Below are instructions on how to run this code on your machine, and how to count your own custom .txt file.
 
